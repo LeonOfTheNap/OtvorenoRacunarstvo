@@ -1,0 +1,13 @@
+lokacijaid,zemljaid,imeLokacije,datum,pobjednik,sudionici,voditeljpobjednika,tijekomkojekoalicije,trajanjeudanima,ukupnoranjenihmrtvih,ime
+1,ITA,Arcole,1796-11-15,FRA,FRA VS AUS,Napoleon Bonaparte,1,3,7400,Bitka za Arcole
+2,EGY,Embabeh,1798-07-21,FRA,"FRA VS OTT, MAM",Napoleon Bonaparte,2,1,10309,Bitka za Piramide
+3,GER,Ulm,1805-10-16,FRA,FRA VS AUS,Napoleon Bonaparte,3,4,5000,Bitka za Ulm
+4,CZE,Austerlitz,1805-12-02,FRA,"FRA VS AUS, RUS",Napoleon Bonaparte,3,1,24279,Bitka za Austerlitz
+6,AUS,Lobau,1809-05-21,AUS,FRA VS AUS,Nadvojvoda Karlo,5,2,42880,Bitka za Aspern-Essling
+7,RUS,Borodino,1812-09-07,NUL,FRA VS RUS,NUL,0,1,85000,Bitka za Borodino
+8,FRA,Reims,1814-03-12,FRA,"FRA VS RUS, PRU",Napoleon Bonaparte,6,2,8700,Bitka za Reims
+9,BEL,Ligny,1815-06-16,FRA,FRA VS PRU,Napoleon Bonaparte,7,1,35500,Bitka za Ligny
+10,BEL,Waterloo,1815-06-18,UK,"FRA VS UK, PRU","Arthur Wellesley, Gebhard Leberecht von Blücher",7,1,59000,Bitka za Waterloo
+5,POR,Vimiero,1808-08-21,UK,"FRA VS UK, POR",Arthur Wellesley,0,1,2888,Bitka za Vimiero
+11,EGY,Abu Qir,1801-03-08,UK,FRA VS UK,Ralph Abercromby,2,1,1130,Druga bitka za Abukir
+11,EGY,Abu Qir,1799-07-25,FRA,FRA VS OTT,Napoleon Bonaparte,2,1,15820,Prva bitka za Abukir
