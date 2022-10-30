@@ -77,5 +77,8 @@ Ime bitke (VarChar(100)) koje ne mora nužno odgovarati imenu samog mjesta.
 #### LokacijaID
 Oznaka (INT) koja specificira o kojoj se lokaciji govori. (U ovom slučaju ovdje služi kao *Foreign Key*)
 
+## Shell komande za ispis
 
-
+koristeći psql i database kao: napoleonskeBitke
+- CSV: \copy (SELECT * FROM lokacija NATURAL JOIN bitka) TO 'C:\Users\MPB\Documents\SQL\napoleonskeBitke_db.csv' DELIMITER ',' CSV HEADER;     
+- JSON: \copy SELECT array_to_json(array_agg(row_to_json(t)))FROM (SELECT *,(select array_to_json(array_agg(row_to_json(d))) FROM (SELECT datum, pobjednik, sudionici, voditeljpobjednika, tijekomkojekoalicije, trajanjeudanima, ukupnoranjenihmrtvih, ime FROM bitka WHERE lokacijaid=lokacija.lokacijaid ORDER BY datum ) d) AS bitke FROM lokacija) t
