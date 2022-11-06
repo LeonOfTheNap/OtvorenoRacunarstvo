@@ -46,7 +46,14 @@ ALTER TABLE public.bitka OWNER TO postgres;
 CREATE TABLE public.lokacija (
     zemljaid character varying(3) NOT NULL,
     "imeLokacije" character varying(40) NOT NULL,
-    lokacijaid integer NOT NULL
+    lokacijaid integer NOT NULL,
+    "širina" numeric,
+    "dužina" numeric,
+    "poštanskibroj" integer,
+    uistojdrzavi boolean,
+    spomenik boolean,
+    drugebitke boolean,
+    zracnaudaljenostodzg numeric
 );
 
 
@@ -76,18 +83,18 @@ COPY public.bitka (datum, pobjednik, sudionici, voditeljpobjednika, tijekomkojek
 -- Data for Name: lokacija; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.lokacija (zemljaid, "imeLokacije", lokacijaid) FROM stdin;
-ITA	Arcole	1
-EGY	Embabeh	2
-GER	Ulm	3
-CZE	Austerlitz	4
-AUS	Lobau	6
-RUS	Borodino	7
-FRA	Reims	8
-BEL	Ligny	9
-BEL	Waterloo	10
-POR	Vimiero	5
-EGY	Abu Qir	11
+COPY public.lokacija (zemljaid, "imeLokacije", lokacijaid, "širina", "dužina", "poštanskibroj", uistojdrzavi, spomenik, drugebitke, zracnaudaljenostodzg) FROM stdin;
+ITA	Arcole	1	45.357222	11.2775	37040	f	t	f	368.45
+GER	Ulm	3	48.3833	9.9833	89073	f	f	f	536.09
+CZE	Austerlitz	4	49.133333	16.766667	68401	f	t	f	377.31
+POR	Vimeiro	5	39.175	-9.316667	2530	t	f	f	2151.87
+EGY	Embabeh	2	30.083333	31.2	3823110	f	f	f	2174.04
+AUS	Lobau	6	48.213056	16.5025	2708	t	t	f	266.30
+FRA	Reims	8	49.2628	4.0347	51100	t	f	t	973.74
+RUS	Borodino	7	55.516667	35.816667	142117	t	t	f	1847.37
+BEL	Ligny	9	50.52027	4.5814	55500	f	f	f	992.41
+BEL	Waterloo	10	50.68	4.412	1410	f	t	t	1013.88
+EGY	Abu Qir	11	31.316667	30.066667	5528332	f	f	t	2017.70
 \.
 
 
