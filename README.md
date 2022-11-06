@@ -39,6 +39,27 @@ Ime lokacije (VarChar(100)).
 #### LokcaijaID
 Oznaka (INT) koja specificira o kojoj se lokaciji govori.
 
+#### Širina
+Oznaka (INT) koja specificira na kojoj geografskoj širini se nalazi lokacija.
+
+#### Dužina
+Oznaka (INT) koja specificira na kojoj geografskoj dužini se nalazi lokacija.
+
+#### PoštanskiBroj
+Oznaka (INT) koja statira poštanski broj lokacije.
+
+#### UIstojDržavi
+Oznaka (BOOL) koja specificira nalazi li se lokacija u istoj državi kao i onda kada se bitka odbila (ukoliko te države tada nije postojalo, vrijednost je tada FALSE).
+
+#### Spomenik
+Oznaka (BOOL) koja govori postoji li spomenik na lokaciji koji komemorira samu bitku.
+
+#### DrugeBitke
+Oznaka (BOOL) koja govori jesu li se na ovoj lokaciji u povijesti dogodile još neke bitke.
+
+#### ZračnaUdaljenostOdZG
+Oznaka (INT) koja specificira zračnu udaljenost lokacije od Zagreb.
+
 ## Bitka
 #### Datum
 Datum (date) koji govori kada se bitka odvila/kada se krenula odvijati (ukoliko je trajala nekoliko dana). U formatu YYYY-MM-DD.
@@ -81,4 +102,4 @@ Oznaka (INT) koja specificira o kojoj se lokaciji govori. (U ovom slučaju ovdje
 
 koristeći psql i database kao: napoleonskeBitke
 - CSV: \copy (SELECT * FROM lokacija NATURAL JOIN bitka) TO 'C:\Users\MPB\Documents\SQL\napoleonskeBitke_db.csv' DELIMITER ',' CSV HEADER;     
-- JSON: \copy SELECT array_to_json(array_agg(row_to_json(t)))FROM (SELECT *,(select array_to_json(array_agg(row_to_json(d))) FROM (SELECT datum, pobjednik, sudionici, voditeljpobjednika, tijekomkojekoalicije, trajanjeudanima, ukupnoranjenihmrtvih, ime FROM bitka WHERE lokacijaid=lokacija.lokacijaid ORDER BY datum ) d) AS bitke FROM lokacija) t
+- JSON: \copy (SELECT array_to_json(array_agg(row_to_json(t)))FROM (SELECT *,(select array_to_json(array_agg(row_to_json(d))) FROM (SELECT datum, pobjednik, sudionici, voditeljpobjednika, tijekomkojekoalicije, trajanjeudanima, ukupnoranjenihmrtvih, ime FROM bitka WHERE lokacijaid=lokacija.lokacijaid ORDER BY datum ) d) AS bitke FROM lokacija) t) TO 'C:\Users\MPB\Documents\SQL\napoleonskeBitke_db.json'
