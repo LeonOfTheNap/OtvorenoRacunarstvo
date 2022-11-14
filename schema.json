@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/LeonOfTheNap/OtvorenoRacunarstvo/main/napoleonskeBitke.json",
+    "$id": "https://github.com/LeonOfTheNap/OtvorenoRacunarstvo/blob/a8cea5da467e02e5bfc73e53e1f7ba662cf87fe1/napoleonskeBitke.json",
     "title": "Lokacija i značajne bitke",
     "description": "Opisuje lokaciju na kojoj se dogodila bitka i samu bitku.",
     "type": "array",
