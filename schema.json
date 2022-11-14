@@ -1,0 +1,121 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "title": "Lokacija i značajne bitke",
+    "description": "Opisuje lokaciju na kojoj se dogodila bitka i samu bitku.",
+    "type": "array",
+    "default": [],
+    "items": {
+        "title": "Shema lokacije i bitke",
+        "description": "Ova shema sadrži atribute lokacije i na kraju atribut bitke koji ima svoje atribute.",
+        "type": "object",
+        "required": [
+            "zemljaid",
+            "imeLokacije",
+            "lokacijaid",
+            "širina",
+            "dužina",
+            "poštanskibroj",
+            "uistojdrzavi",
+            "spomenik",
+            "drugebitke",
+            "zracnaudaljenostodzg",
+            "bitke"
+        ],
+        "properties": {
+            "zemljaid": {
+                "description": "String od 3 slova koji govori o kojoj se državi danas radi.",
+                "type": "string"
+            },
+            "imeLokacije": {
+                "description": "Ime lokacije.",
+                "type": "string"
+            },
+            "lokacijaid": {
+                "description": "Unikatan broj koji se dodijeljuje svakoj lokaciji.",
+                "type": "number"
+            },
+            "širina": {
+                "description": "Zemljopisna širina na kojoj se lokacija nalazi.",
+                "type": "number"
+            },
+            "dužina": {
+                "description": "Zemljopisna dužina na kojoj se lokacija nalazi.",
+                "type": "number"
+            },
+            "poštanskibroj": {
+                "description": "Poštanski broj lokacije. Ukoliko ih ima više, odabran samo jedan.",
+                "type": "number"
+            },
+            "uistojdrzavi": {
+                "description": "Označava nalazi li se mjesto u istoj državi kao i danas u doba kada se bitka odvila.",
+                "type": "boolean"
+            },
+            "spomenik": {
+                "description": "Označava nalazi li se spomenik bici na mjestu gdje se bitka odvila.",
+                "type": "boolean"
+            },
+            "drugebitke": {
+                "description": "Postoje li druge bitke u povijesti koje su se odvile na istoj lokaciji.",
+                "type": "boolean"
+            },
+            "zracnaudaljenostodzg": {
+                "description": "Označava zračnu udaljenost u kilometrima od Zagreba.",
+                "type": "number"
+            },
+            "bitke": {
+                "title": "Bitka shema",
+                "description": "Shema koja govori o atributima bitke.",
+                "type": "array",
+                "items": {
+                    "title": "Atributi bitke",
+                    "type": "object",
+                    "required": [
+                        "datum",
+                        "pobjednik",
+                        "sudionici",
+                        "voditeljpobjednika",
+                        "tijekomkojekoalicije",
+                        "trajanjeudanima",
+                        "ukupnoranjenihmrtvih",
+                        "ime"
+                    ],
+                    "properties": {
+                        "datum": {
+                            "description": "Datum kada se odvila bitka. U formatu YYYY-MM-DD",
+                            "type": "string"
+                        },
+                        "pobjednik": {
+                            "description": "Označava koja strana je pobjedila u bici.",
+                            "type": "string"
+                        },
+                        "sudionici": {
+                            "description": "Označava tko se borio protiv koga u formatu 'jedna strana VS druga strana'",
+                            "type": "string"
+                        },
+                        "voditeljpobjednika": {
+                            "description": "Ime i prezime voditelja pobjedničke strane. Ukoliko ih ima više, odvojeni su zarezom.",
+                            "type": "string"
+                        },
+                        "tijekomkojekoalicije": {
+                            "description": "Označava tijekom koje se koalicije održala ova bitka.",
+                            "type": "number"
+                        },
+                        "trajanjeudanima": {
+                            "description": "Označava trajanje bitke u danima.",
+                            "type": "number"
+                        },
+                        "ukupnoranjenihmrtvih": {
+                            "description": "Označava broj ukupno ranjenih i mrtvih u bici s obje strane.",
+                            "type": "number"
+                        },
+                        "ime": {
+                            "description": "Označava ime bitke.",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
