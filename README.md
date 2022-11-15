@@ -6,9 +6,6 @@ Mario Petar Bišćan
 ## Opis licence
 Radi se o _CC0 1.0 Universal_ licenci koja zapravo dopušta da se ovi materijali koriste kako god tko želi, bez nužnosti da me se navodi kao autora. https://creativecommons.org/publicdomain/zero/1.0/
 
-## Verzija dokumenta
-1.0
-
 ## Napomena
 Preporučam kopirati JSON u https://codebeautify.org/jsonviewer i stisnuti *Beautify* da se vidi cijela forma.
 
