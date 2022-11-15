@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR glavna stranica</title>
+    <meta name="author" content="Mario Petar Bišćan">
+    <meta name="keywords" content="napoleonske bitke, bitka, napoleon">
+    <meta name="description" content="Ovaj dokument sadržava popis nekih bitaka koje su se dogodile tokom napoleonskog doba.">
+</head>
+<body>
+
+<h1>Otvoreno računarstvo</h1>
+
+<a href="/datatable">Za datatable</a>
+<h2>O podacima</h2> 
+<h3>Licenca</h3>
+Radi se o <i>CC0 1.0 Universal</i> licenci koja zapravo dopušta da se ovi materijali koriste kako god tko želi, bez nužnosti da me se navodi kao autora. https://creativecommons.org/publicdomain/zero/1.0/
+
+
+ <!-Napomena
+Preporučam kopirati JSON u https://codebeautify.org/jsonviewer i stisnuti *Beautify* da se vidi cijela forma. -->
+
+<h3>Jezik podataka</h3>
+Hrvatski (za zemljaID podatak se koriste internacionalne skraćenice).
+
+<h3>Opis podataka</h3> 
+<p><a href="https://raw.githubusercontent.com/LeonOfTheNap/OtvorenoRacunarstvo/main/napoleonskeBitke.json">JSON format podataka</a> <a href="https://raw.githubusercontent.com/LeonOfTheNap/OtvorenoRacunarstvo/main/napoleonskeBitke.csv">CSV format podataka</a></p>
+
+
+
+<h4>Lokacija</h4>
+<h5>ZemljaID</h5> 
+Oznaka (VarChar(3)) koja govori u kojoj se <b>današnjoj</b> državi lokacija nalazi.
+
+Slijedi objašnjenje svih kratica:
+<ul>
+    <li>AUS = Austrija </li>
+    <li>BEL = Belgija</li>
+    <li>CZE = Češka</li>
+    <li>EGY = Egipat</li>
+    <li>FRA = Francuska</li>
+    <li>GER = Njemačka</li>
+    <li>ITA = Italija</li>
+    <li>POR = Portugal</li>
+    <li>RUS = Rusija</li>
+  </ul>
+
+
+<h5>ImeLokacije</h5> 
+Ime lokacije (VarChar(100)).
+
+<h5>LokacijaID</h5>
+Oznaka (INT) koja specificira o kojoj se lokaciji govori.
+
+<h5>Širina</h5>
+Oznaka (INT) koja specificira na kojoj geografskoj širini se nalazi lokacija.
+
+<h5>Dužina</h5>
+Oznaka (INT) koja specificira na kojoj geografskoj dužini se nalazi lokacija.
+
+<h5>PoštanskiBroj</h5>
+Oznaka (INT) koja statira poštanski broj lokacije.
+
+<h5>UIstojDržavi</h5> 
+Oznaka (BOOL) koja specificira nalazi li se lokacija u istoj državi kao i onda kada se bitka odbila (ukoliko te države tada nije postojalo, vrijednost je tada FALSE).
+
+<h5>Spomenik</h5> 
+Oznaka (BOOL) koja govori postoji li spomenik na lokaciji koji komemorira samu bitku.
+
+<h5>DrugeBitke</h5> 
+Oznaka (BOOL) koja govori jesu li se na ovoj lokaciji u povijesti dogodile još neke bitke.
+
+<h5>ZračnaUdaljenostOdZG</h5> 
+Oznaka (INT) koja specificira zračnu udaljenost lokacije od Zagreb.
+
+<h4>Bitka</h4> 
+<h5>Datum</h5> 
+Datum (date) koji govori kada se bitka odvila/kada se krenula odvijati (ukoliko je trajala nekoliko dana). U formatu YYYY-MM-DD.
+
+<h5>Pobjednik</h5>  
+Oznaka (VarChar(3)) koja govori koja zemlja je bila pobjednička u bitci. Ukoliko piše _NUL_ znači da je bitka završila neriješeno.
+
+<h5>Sudionici</h5> 
+Oznaka (VarChar(40)) koja govori koje zemlje su se borile protiv koje. U formatu <i>XXX VS YYY</i> gdje je jedna strana <i>XXX</i> a druga <i>YYY</i>. 
+
+Slijedi objašnjenje svih kratica:
+<ul>
+    <li>AUS = Austrija</li>
+    <li>FRA = Francuska</li>
+    <li>MAM = Mamluci</li>
+    <li>OTT = Osmansko Cartsvo</li>
+    <li>POR = Portugal</li>
+    <li>PRU = Prusija</li>
+    <li>RUS = Rusija</li>
+    <li>UK = Ujedinjeno Kraljestvo</li>
+</ul>
+
+<h5>VoditeljPobjednika</h5> 
+Oznaka (VarChar(100)) koja daje ime i prezime generla pobjedničke strane.
+
+<h5>TijekomKojeKoalicije</h5> 
+Oznaka (INT) koja govori tijekom koje koalicije se odvila bitka. Ukoliko je oznaka `0` znači da se odvila u sklopu nekog drugog rata/kampanje.
+
+<h5>TrajanjeUDanima</h5> 
+Oznaka (INT) koja govori koliko je dana trajala bitka.
+
+<h5>UkupnoRanjenihMrtvih</h5> 
+Oznaka (INT) koja govori koliko je sveukupno bilo ranjenih i mrtvih ljudi s obje strane (uključujući i nestale).
+
+<h5>Ime</h5> 
+Ime bitke (VarChar(100)) koje ne mora nužno odgovarati imenu samog mjesta.
+
+<h5>LokacijaID</h5> 
+Oznaka (INT) koja specificira o kojoj se lokaciji govori. (U ovom slučaju ovdje služi kao *Foreign Key*)
+
+<h4>Shell komande za ispis</h4>
+
+koristeći psql i database kao: napoleonskeBitke
+CSV: \copy (SELECT * FROM lokacija NATURAL JOIN bitka) TO 'C:\Users\MPB\Documents\SQL\napoleonskeBitke_db.csv' DELIMITER ',' CSV HEADER;     
+JSON: \copy (SELECT array_to_json(array_agg(row_to_json(t)))FROM (SELECT *,(select array_to_json(array_agg(row_to_json(d))) FROM (SELECT datum, pobjednik, sudionici, voditeljpobjednika, tijekomkojekoalicije, trajanjeudanima, ukupnoranjenihmrtvih, ime FROM bitka WHERE lokacijaid=lokacija.lokacijaid ORDER BY datum ) d) AS bitke FROM lokacija) t) TO 'C:\Users\MPB\Documents\SQL\napoleonskeBitke_db.json'
+</body>
+</html>
