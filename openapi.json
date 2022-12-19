@@ -1,0 +1,268 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "OpenAPI specifikacija za REST API node express server o napoleonskim bitkama i njezninim lokacijama",
+        "version": "1.0.0",
+        "contact": {
+            "email": "mario-petar.biscan@fer.hr"
+            },
+        "license": {
+            "name": "Creative Commons Zero v1.0 Universal",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+            }
+    },
+    "paths":{
+            "/":{
+                "get":{
+                    "summary":"Dohvati popis bitaka povezane s lokacijama",
+                    "operationId":"getBitkeILokacije",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"#/definitions/lokacijaibitka"
+                                }
+                            }
+                        },
+                        "404":{
+                            "description": "Resurs ne postoji"
+                        }
+                    }}},
+            "/jednabitka/":{
+                "post":{
+                    "summary":"Dodavanje bitke u bazu",
+                    "operationId":"postBitke",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation"
+                            }
+                        },
+                        "404":{
+                            "description": "Datum već zauzet ili krivi format datuma"
+                        }
+                    }},
+            "/jednabitka/:id":{
+                "get":{
+                    "summary":"Dohvat bitke po datumu kao ID",
+                    "operationId":"getBitka",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"object",
+                                "items":{
+                                    "$ref":"#/definitions/bitka"
+                                }
+                            }
+                        },
+                        "404":{
+                            "description": "Datum već zauzet ili krivi format datuma"
+                        },
+                        "406":{
+                            "description":"Krivi format datuma"
+                        }
+                    }},
+                "put":{
+                    "summary":"Ažuriranje bitke u bazi",
+                    "operationId":"putBitka",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation"
+                            },
+                        "404":{
+                            "description": "Datum već zauzet ili krivi format datuma"
+                        }
+                    }},
+                "delete":{
+                    "summary":"Brisanje bitke iz baze",
+                    "operationId":"deleteBitka",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation"
+                            },
+                        "404":{
+                            "description": "Datum već zauzet ili krivi format datuma"
+                        }
+                    }}
+            },
+            "/getegypt":{
+                "get":{
+                    "summary":"Dohvat bitaka koje su se odvile u današnjem Egiptu",
+                    "operationId":"getBitkaEgypt",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"object",
+                                "items":{
+                                    "$ref":"#/definitions/bitka"
+                                }
+                            }
+                        },
+                        "404":{
+                            "description": "Datum već zauzet ili krivi format datuma"
+                        },
+                        "406":{
+                            "description":"Krivi format datuma"
+                        }
+                    }}
+                },
+            "/victornotfrance":{
+                "get":{
+                    "summary":"Dohvat bitaka u kojima Francuska nije pobijedila",
+                    "operationId":"getBitkeVictorNotFrance",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"object",
+                                "items":{
+                                    "$ref":"#/definitions/bitka"
+                                }
+                            }
+                        }
+                    }}
+            },
+            "/visedana":{
+                "get":{
+                    "summary":"Dohvat bitaka koje su trajale više dana",
+                    "operationId":"getBitkeViseDana",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"object",
+                                "items":{
+                                    "$ref":"#/definitions/bitka"
+                                }
+                            }
+                        }
+                    }}
+                },
+            "/openapi":{
+                "get":{
+                    "summary":"Dohvat OpenAPI dokumentacije",
+                    "operationId":"getBitkeViseDana",
+                    "produces":"application/json",
+                    "responses":{
+                        "200":{
+                            "description":"successful operation",
+                            "schema":{
+                                "type":"string",
+                                "format":"base64"
+                            }
+                        }
+                    }}}
+        },
+    "definitions":{
+        "bitka":{
+            "type": "object",
+            "properties": {
+                "datum": {
+                    "description": "Datum kada se odvila bitka. U formatu YYYY-MM-DD",
+                    "type": "string"
+                },
+                "pobjednik": {
+                    "description": "Označava koja strana je pobjedila u bici.",
+                    "type": "string"
+                },
+                "sudionici": {
+                    "description": "Označava tko se borio protiv koga u formatu 'jedna strana VS druga strana'",
+                    "type": "string"
+                },
+                "voditeljpobjednika": {
+                    "description": "Ime i prezime voditelja pobjedničke strane. Ukoliko ih ima više, odvojeni su zarezom.",
+                    "type": "string"
+                },
+                "tijekomkojekoalicije": {
+                    "description": "Označava tijekom koje se koalicije održala ova bitka.",
+                    "type": "integer",
+                    "format":"int64"
+                },
+                "trajanjeudanima": {
+                    "description": "Označava trajanje bitke u danima.",
+                    "type": "integer",
+                    "format":"int64"
+                },
+                "ukupnoranjenihmrtvih": {
+                    "description": "Označava broj ukupno ranjenih i mrtvih u bici s obje strane.",
+                    "type": "integer",
+                    "format":"int64"
+                },
+                "ime": {
+                    "description": "Označava ime bitke.",
+                    "type": "string"
+                }
+            }
+        },
+        "lokacija":{
+            "type": "object",
+            "properties":{
+                "zemljaid": {
+                    "description": "String od 3 slova koji govori o kojoj se državi danas radi.",
+                    "type": "string"
+                },
+                "imeLokacije": {
+                    "description": "Ime lokacije.",
+                    "type": "string"
+                },
+                "lokacijaid": {
+                    "description": "Unikatan broj koji se dodijeljuje svakoj lokaciji.",
+                    "type": "integer",
+                    "format":"int64"
+                },
+                "širina": {
+                    "description": "Zemljopisna širina na kojoj se lokacija nalazi.",
+                    "type": "number",
+                    "format":"double"
+                },
+                "dužina": {
+                    "description": "Zemljopisna dužina na kojoj se lokacija nalazi.",
+                    "type": "number",
+                    "format":"double"
+                },
+                "poštanskibroj": {
+                    "description": "Poštanski broj lokacije. Ukoliko ih ima više, odabran samo jedan.",
+                    "type": "integer",
+                    "format":"int64"
+                },
+                "uistojdrzavi": {
+                    "description": "Označava nalazi li se mjesto u istoj državi kao i danas u doba kada se bitka odvila.",
+                    "type": "boolean"
+                },
+                "spomenik": {
+                    "description": "Označava nalazi li se spomenik bici na mjestu gdje se bitka odvila.",
+                    "type": "boolean"
+                },
+                "drugebitke": {
+                    "description": "Postoje li druge bitke u povijesti koje su se odvile na istoj lokaciji.",
+                    "type": "boolean"
+                },
+                "zracnaudaljenostodzg": {
+                    "description": "Označava zračnu udaljenost u kilometrima od Zagreba.",
+                    "type": "integer",
+                    "format":"int64"
+                }
+            }
+
+        },
+        "lokacijaibitka":{
+            "type":"array",
+            "properties":{
+                "$ref":"#/definitions/lokacija",
+                "$ref":"#/definitions/bitka"
+
+            }
+        }
+    }
+}
