@@ -12,10 +12,46 @@ function getStandardResponse(status, message, response){
      }
 }
 
+function getStandardResponseAll(status, message, response){
+
+    for(let i in response){
+        ime = response[i]["imeLokacije"]
+        sirina = response[i]["širina"]
+        duzina = response[i]["dužina"]
+        zemlja = response[i]["zemljaid"]
+        postanskibroj = response[i]["poštanskibroj"]
+        delete response[i]["širina"]
+        delete response[i]["dužina"]
+        delete response[i]["zemljaid"]
+        delete response[i]["poštanskibroj"]
+        response[i]["@context"] = {
+                "location": "https://schema.org/GeoCoordinates",
+                "@vocab": "https://schema.org/",
+                "addressCountry": "zemljaid",
+                "postalCode": "poštanskibroj",
+                "name":"imeLokacije",
+                "latitude":"širina",
+                "longitude":"dužina"}
+        response[i]["location"] = {
+            "zemljaid": zemlja,
+            "imeLokacije": ime,
+            "poštanskibroj": postanskibroj,
+            "dužina": duzina,
+            "širina": sirina}
+
+    }
+
+    return {
+        status: status,
+        message : message,
+        response : response
+     }
+}
+
 const getBitke = (req, res) => {
     pool.query(queries.getBitke, (error, results) => {
         if(error) throw error
-        res.status(200).json(getStandardResponse("OK", "Dohvat svih bitki", results.rows))
+        res.status(200).json(getStandardResponseAll("OK", "Dohvat svih bitki", results.rows))
     })
 }
 

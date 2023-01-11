@@ -1,0 +1,13 @@
+lokacijaid,datum,pobjednik,sudionici,voditeljpobjednika,tijekomkojekoalicije,trajanjeudanima,ukupnoranjenihmrtvih,ime,zemljaid,imeLokacije,širina,dužina,poštanskibroj,uistojdrzavi,spomenik,drugebitke,zracnaudaljenostodzg
+1,1796-11-14T22:38:00.000Z,FRA,FRA VS AUS,Napoleon Bonaparte,1,3,7400,Bitka za Arcole,ITA,Arcole,45.357222,11.2775,37040,false,true,false,368.45
+3,1805-10-15T22:38:00.000Z,FRA,FRA VS AUS,Napoleon Bonaparte,3,4,5000,Bitka za Ulm,GER,Ulm,48.3833,9.9833,89073,false,false,false,536.09
+4,1805-12-01T22:38:00.000Z,FRA,"FRA VS AUS, RUS",Napoleon Bonaparte,3,1,24279,Bitka za Austerlitz,CZE,Austerlitz,49.133333,16.766667,68401,false,true,false,377.31
+5,1808-08-20T22:38:00.000Z,UK,"FRA VS UK, POR",Arthur Wellesley,0,1,2888,Bitka za Vimiero,POR,Vimeiro,39.175,-9.316667,2530,true,false,false,2151.87
+2,1798-07-20T22:38:00.000Z,FRA,"FRA VS OTT, MAM",Napoleon Bonaparte,2,1,10309,Bitka za Piramide,EGY,Embabeh,30.083333,31.2,3823110,false,false,false,2174.04
+6,1809-05-20T22:38:00.000Z,AUS,FRA VS AUS,Nadvojvoda Karlo,5,2,42880,Bitka za Aspern-Essling,AUS,Lobau,48.213056,16.5025,2708,true,true,false,266.30
+8,1814-03-11T22:38:00.000Z,FRA,"FRA VS RUS, PRU",Napoleon Bonaparte,6,2,8700,Bitka za Reims,FRA,Reims,49.2628,4.0347,51100,true,false,true,973.74
+7,1812-09-06T22:38:00.000Z,NUL,FRA VS RUS,NUL,0,1,85000,Bitka za Borodino,RUS,Borodino,55.516667,35.816667,142117,true,true,false,1847.37
+9,1815-06-15T22:38:00.000Z,FRA,FRA VS PRU,Napoleon Bonaparte,7,1,35500,Bitka za Ligny,BEL,Ligny,50.52027,4.5814,55500,false,false,false,992.41
+10,1815-06-17T22:38:00.000Z,UK,"FRA VS UK, PRU","Arthur Wellesley, Gebhard Leberecht von Blücher",7,1,59000,Bitka za Waterloo,BEL,Waterloo,50.68,4.412,1410,false,true,true,1013.88
+11,1801-03-07T22:38:00.000Z,UK,FRA VS UK,Ralph Abercromby,2,1,1130,Druga bitka za Abukir,EGY,Abu Qir,31.316667,30.066667,5528332,false,false,true,2017.70
+11,1799-07-24T22:38:00.000Z,FRA,FRA VS OTT,Napoleon Bonaparte,2,1,15820,Prva bitka za Abukir,EGY,Abu Qir,31.316667,30.066667,5528332,false,false,true,2017.70

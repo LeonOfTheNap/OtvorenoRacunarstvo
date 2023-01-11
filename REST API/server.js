@@ -10,7 +10,7 @@ var zip = require('express-zip')
 const { requiresAuth } = require('express-openid-connect')
 const { json } = require('body-parser')
 var fs = require('fs')
-var converter = require('json2csv').parse
+const converter = require('json-2-csv')
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -41,6 +41,8 @@ app.get('/profile', requiresAuth(), (req, res) => {
   });
 
 app.get('/dohvatcsvjson', (req, res) =>{
+
+
     pool.query(queries.getBitke, (error, results) => {
         if(error) throw error
 
@@ -52,25 +54,36 @@ app.get('/dohvatcsvjson', (req, res) =>{
 
     })
     pool.query(queries.getBitke, (error, results) => {
+      if(error) throw error
+
         data = JSON.stringify(results.rows);
-
         var obj = JSON.parse(data);
-        var content = JSON.stringify(obj);
-        content = converter(json, content,fields)
 
-            fs.writeFileSync('bitka.csv',content)
+        converter.json2csv(obj, (err, csv) => {
+          if (err) {
+            throw err
+          }
+
+          console.log(csv)
+          fs.writeFileSync('bitka.csv', csv)
+          
+          res.zip([
+            { path: path.join(__dirname, 'bitka.json'),
+                name: 'bitka.json'},
+            { path: path.join(__dirname, 'bitka.csv'),
+                name: 'bitka.csv'},
+          ])
+        });
         
-            res.zip([
-                { path: path.join(__dirname, 'bitka.json'),
-                    name: 'bitka.json'},
-                { path: path.join(__dirname, 'bitka.csv'),
-                    name: 'bitka.csv'},
-         ])
 
         })
 })
 
+function konvertiraj(mojKontent){
+  meow = csvjson.toCSV(mojKontent, {headers: 'key'})
 
+    return meow
+}
 // app.use((req, res, next) => {
 //     if(req.method == "GET")
 //     res.status(404).json({
